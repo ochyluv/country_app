@@ -18,7 +18,20 @@ dependencies:
   stacked_services: ^0.9.8
   flutter_hooks: ^0.18.2+1
 
-  cupertino_icons: ^1.0.2
+  # Utilities
+  faker: ^2.0.0
+  uuid: ^3.0.6
+  http: ^0.13.5
+
+  # Data Models
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+
+  # UI Components
+  cupertino_icons: ^1.0.5
+  google_fonts: ^3.0.1
+  font_awesome_flutter: ^ 10.2.1
+  cached_network_image: ^3.2.2
 
 dev_dependencies:
   flutter_test:
@@ -28,13 +41,13 @@ dev_dependencies:
   build_runner: ^2.3.2
   stacked_generator: ^0.8.0+1
 
+  # data models
+  freezed: ^2.2.1
+  json_serializable: ^6.5.4
+
   flutter_lints: ^2.0.0
 
 flutter:
-
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
