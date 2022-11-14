@@ -5,10 +5,12 @@ import 'package:country_app/core/constants/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class FilterButton extends StatelessWidget {
-  const FilterButton({super.key, required this.title, required this.icon});
+  const FilterButton(
+      {super.key, required this.title, required this.icon, this.onTap});
 
   final String title;
   final IconData icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class FilterButton extends StatelessWidget {
           minimumSize: const Size(60, 50),
           backgroundColor: kGreyColor,
           padding: kEdgeInsetsAllSmall),
-      onPressed: () => {},
+      onPressed: onTap,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
