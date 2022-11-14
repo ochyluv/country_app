@@ -42,7 +42,9 @@ _$_CountryModel _$$_CountryModelFromJson(Map<String, dynamic> json) =>
           ? null
           : Car.fromJson(json['car'] as Map<String, dynamic>),
       flags: Flags.fromJson(json['flags'] as Map<String, dynamic>),
-      dailingCode: DailingCode.fromJson(json['idd'] as Map<String, dynamic>),
+      dialingCode: json['idd'] == null
+          ? null
+          : DialingCode.fromJson(json['idd'] as Map<String, dynamic>),
       coatOfArms: Flags.fromJson(json['coatOfArms'] as Map<String, dynamic>),
       capitalInfo:
           CapitalInfo.fromJson(json['capitalInfo'] as Map<String, dynamic>),
@@ -67,7 +69,7 @@ Map<String, dynamic> _$$_CountryModelToJson(_$_CountryModel instance) =>
       'languages': instance.languages,
       'car': instance.car?.toJson(),
       'flags': instance.flags.toJson(),
-      'idd': instance.dailingCode.toJson(),
+      'idd': instance.dialingCode?.toJson(),
       'coatOfArms': instance.coatOfArms.toJson(),
       'capitalInfo': instance.capitalInfo.toJson(),
     };
@@ -136,8 +138,8 @@ Map<String, dynamic> _$$_FlagsToJson(_$_Flags instance) => <String, dynamic>{
       'png': instance.png,
     };
 
-_$_DailingCode _$$_DailingCodeFromJson(Map<String, dynamic> json) =>
-    _$_DailingCode(
+_$_DialingCode _$$_DialingCodeFromJson(Map<String, dynamic> json) =>
+    _$_DialingCode(
       root: json['root'] as String? ?? '',
       suffixes: (json['suffixes'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -145,7 +147,7 @@ _$_DailingCode _$$_DailingCodeFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$_DailingCodeToJson(_$_DailingCode instance) =>
+Map<String, dynamic> _$$_DialingCodeToJson(_$_DialingCode instance) =>
     <String, dynamic>{
       'root': instance.root,
       'suffixes': instance.suffixes,
