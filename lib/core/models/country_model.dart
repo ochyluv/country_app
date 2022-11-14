@@ -27,7 +27,7 @@ class CountryModel with _$CountryModel {
     Car? car,
     required Flags flags,
     // ignore: invalid_annotation_target
-    @JsonKey(name: 'idd') required DailingCode dailingCode,
+    @JsonKey(name: 'idd') DialingCode? dialingCode,
     required Flags coatOfArms,
     required CapitalInfo capitalInfo,
   }) = _CountryModel;
@@ -38,6 +38,18 @@ class CountryModel with _$CountryModel {
   String get countryName => name.common;
   String get countryCapital => capital.isEmpty ? '' : capital.first;
   String get logo => flags.png;
+
+  String get countryDialCode => dialingCode == null
+      ? 'No dialing code'
+      : dialingCode!.root + dialingCode!.suffixes.first;
+
+  String get language => languages == null
+      ? 'No Languages'
+      : languages!.values.toList().join(', ');
+
+  String get currency => currencies == null || currencies!.locale.isEmpty
+      ? 'No Currencies'
+      : currencies!.locale.values.toList().join(', ');
 }
 
 @freezed
@@ -104,14 +116,14 @@ class Flags with _$Flags {
 }
 
 @freezed
-class DailingCode with _$DailingCode {
-  factory DailingCode({
+class DialingCode with _$DialingCode {
+  factory DialingCode({
     @Default('') String root,
     @Default([]) List<String> suffixes,
-  }) = _DailingCode;
+  }) = _DialingCode;
 
-  factory DailingCode.fromJson(Map<String, dynamic> json) =>
-      _$DailingCodeFromJson(json);
+  factory DialingCode.fromJson(Map<String, dynamic> json) =>
+      _$DialingCodeFromJson(json);
 }
 
 @freezed
