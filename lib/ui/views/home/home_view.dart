@@ -5,7 +5,7 @@ import 'package:country_app/core/constants/spacing.dart';
 import 'package:country_app/core/constants/text_styles.dart';
 import 'package:country_app/ui/views/home/home_viewmodel.dart';
 import 'package:country_app/ui/widgets/app_spinner.dart';
-import 'package:country_app/ui/widgets/filter_card.dart';
+import 'package:country_app/ui/widgets/filter_button.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
@@ -31,7 +31,8 @@ class HomeView extends StatelessWidget {
                       'Explore',
                       style: kHeading2TextStyle.copyWith(color: kBlueColor),
                     ),
-                    Ink(
+                    InkWell(
+                      onTap: () => {},
                       child: const Icon(
                         Icons.light_mode_outlined,
                         color: kBlackColor,
@@ -57,11 +58,11 @@ class HomeView extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
-                    FilterCard(
+                    FilterButton(
                       icon: Icons.language,
                       title: 'EN',
                     ),
-                    FilterCard(
+                    FilterButton(
                       icon: Icons.filter_alt_outlined,
                       title: 'Filter',
                     ),
