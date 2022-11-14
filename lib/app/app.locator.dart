@@ -8,7 +8,9 @@
 
 import 'package:stacked_core/stacked_core.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
+import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 
+import '../core/custom_snackbar_service.dart';
 import '../core/services/country_service.dart';
 
 final locator = StackedLocator.instance;
@@ -22,4 +24,6 @@ Future<void> setupLocator(
 // Register dependencies
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => CountryService());
+  locator.registerLazySingleton(() => SnackbarService());
+  locator.registerLazySingleton(() => CustomSnackbarService());
 }
