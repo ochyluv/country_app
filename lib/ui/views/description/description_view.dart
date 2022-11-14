@@ -20,7 +20,10 @@ class DescriptionView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          iconTheme: const IconThemeData(color: kBlackColor, size: 30),
+          iconTheme: const IconThemeData(
+            color: kBlackColor,
+            size: 30,
+          ),
           elevation: 0,
           title: Text(
             country.countryName,
@@ -36,16 +39,35 @@ class DescriptionView extends StatelessWidget {
               verticalSpaceRegular,
               Stack(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: country.logo,
-                      placeholder: (context, url) =>
-                          const CircularProgressIndicator(
-                        color: kGreyColor,
-                      ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                  SizedBox(
+                    height: 200,
+                    child: PageView(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: CachedNetworkImage(
+                            imageUrl: country.logo,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(
+                              color: kGreyColor,
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
+                        ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: CachedNetworkImage(
+                            imageUrl: country.coatOfArms.png,
+                            placeholder: (context, url) =>
+                                const CircularProgressIndicator(
+                              color: kGreyColor,
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   const Positioned(
@@ -70,59 +92,49 @@ class DescriptionView extends StatelessWidget {
               ),
               verticalSpaceRegular,
               DetailsRow(
-                  title: 'Population: ',
-                  details: country.population.toString(),
-                  country: country),
+                title: 'Population: ',
+                details: country.population.toString(),
+              ),
               verticalSpaceSmall,
               DetailsRow(
                 title: 'Region: ',
                 details: country.region,
-                country: country,
               ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Capital: ',
-                  details: country.capital.first,
-                  country: country),
+                title: 'Capital: ',
+                details: country.capital.first,
+              ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Language: ',
-                  details: country.languages.toString(),
-                  country: country),
+                title: 'Language: ',
+                details: country.language,
+              ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Independence: ',
-                  details: country.independent.toString(),
-                  country: country),
+                title: 'Independence: ',
+                details: country.independent.toString(),
+              ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Area: ',
-                  details: country.area.toString(),
-                  country: country),
+                title: 'Area: ',
+                details: country.area.toString(),
+              ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Currency: ',
-                  details: country.currencies.toString(),
-                  country: country),
+                title: 'Currency: ',
+                details: country.currency,
+              ),
               verticalSpaceSmall,
               DetailsRow(
-                  title: 'Timezones: ',
-                  details: country.timezones.first,
-                  country: country),
+                title: 'Timezones: ',
+                details: country.timezones.first,
+              ),
               DetailsRow(
-                  title: 'Dailing Code: ',
-                  details: country.dailingCode.toString(),
-                  country: country),
+                title: 'Dialing Code: ',
+                details: country.countryDialCode,
+              ),
               verticalSpaceSmall,
-              DetailsRow(
-                  title: 'Currency: ',
-                  details: country.currencies.toString(),
-                  country: country),
-              verticalSpaceSmall,
-              DetailsRow(
-                  title: 'Timezones: ',
-                  details: country.timezones.first,
-                  country: country),
             ],
           ),
         ),
