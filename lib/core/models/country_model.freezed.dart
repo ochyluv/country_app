@@ -39,7 +39,7 @@ mixin _$CountryModel {
   Flags get flags =>
       throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'idd')
-  DailingCode get dailingCode => throw _privateConstructorUsedError;
+  DialingCode? get dialingCode => throw _privateConstructorUsedError;
   Flags get coatOfArms => throw _privateConstructorUsedError;
   CapitalInfo get capitalInfo => throw _privateConstructorUsedError;
 
@@ -73,7 +73,7 @@ abstract class $CountryModelCopyWith<$Res> {
       Map<String, String>? languages,
       Car? car,
       Flags flags,
-      @JsonKey(name: 'idd') DailingCode dailingCode,
+      @JsonKey(name: 'idd') DialingCode? dialingCode,
       Flags coatOfArms,
       CapitalInfo capitalInfo});
 
@@ -81,7 +81,7 @@ abstract class $CountryModelCopyWith<$Res> {
   $CurrenciesCopyWith<$Res>? get currencies;
   $CarCopyWith<$Res>? get car;
   $FlagsCopyWith<$Res> get flags;
-  $DailingCodeCopyWith<$Res> get dailingCode;
+  $DialingCodeCopyWith<$Res>? get dialingCode;
   $FlagsCopyWith<$Res> get coatOfArms;
   $CapitalInfoCopyWith<$Res> get capitalInfo;
 }
@@ -116,7 +116,7 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
     Object? languages = freezed,
     Object? car = freezed,
     Object? flags = null,
-    Object? dailingCode = null,
+    Object? dialingCode = freezed,
     Object? coatOfArms = null,
     Object? capitalInfo = null,
   }) {
@@ -189,10 +189,10 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
           ? _value.flags
           : flags // ignore: cast_nullable_to_non_nullable
               as Flags,
-      dailingCode: null == dailingCode
-          ? _value.dailingCode
-          : dailingCode // ignore: cast_nullable_to_non_nullable
-              as DailingCode,
+      dialingCode: freezed == dialingCode
+          ? _value.dialingCode
+          : dialingCode // ignore: cast_nullable_to_non_nullable
+              as DialingCode?,
       coatOfArms: null == coatOfArms
           ? _value.coatOfArms
           : coatOfArms // ignore: cast_nullable_to_non_nullable
@@ -246,9 +246,13 @@ class _$CountryModelCopyWithImpl<$Res, $Val extends CountryModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $DailingCodeCopyWith<$Res> get dailingCode {
-    return $DailingCodeCopyWith<$Res>(_value.dailingCode, (value) {
-      return _then(_value.copyWith(dailingCode: value) as $Val);
+  $DialingCodeCopyWith<$Res>? get dialingCode {
+    if (_value.dialingCode == null) {
+      return null;
+    }
+
+    return $DialingCodeCopyWith<$Res>(_value.dialingCode!, (value) {
+      return _then(_value.copyWith(dialingCode: value) as $Val);
     });
   }
 
@@ -295,7 +299,7 @@ abstract class _$$_CountryModelCopyWith<$Res>
       Map<String, String>? languages,
       Car? car,
       Flags flags,
-      @JsonKey(name: 'idd') DailingCode dailingCode,
+      @JsonKey(name: 'idd') DialingCode? dialingCode,
       Flags coatOfArms,
       CapitalInfo capitalInfo});
 
@@ -308,7 +312,7 @@ abstract class _$$_CountryModelCopyWith<$Res>
   @override
   $FlagsCopyWith<$Res> get flags;
   @override
-  $DailingCodeCopyWith<$Res> get dailingCode;
+  $DialingCodeCopyWith<$Res>? get dialingCode;
   @override
   $FlagsCopyWith<$Res> get coatOfArms;
   @override
@@ -343,7 +347,7 @@ class __$$_CountryModelCopyWithImpl<$Res>
     Object? languages = freezed,
     Object? car = freezed,
     Object? flags = null,
-    Object? dailingCode = null,
+    Object? dialingCode = freezed,
     Object? coatOfArms = null,
     Object? capitalInfo = null,
   }) {
@@ -416,10 +420,10 @@ class __$$_CountryModelCopyWithImpl<$Res>
           ? _value.flags
           : flags // ignore: cast_nullable_to_non_nullable
               as Flags,
-      dailingCode: null == dailingCode
-          ? _value.dailingCode
-          : dailingCode // ignore: cast_nullable_to_non_nullable
-              as DailingCode,
+      dialingCode: freezed == dialingCode
+          ? _value.dialingCode
+          : dialingCode // ignore: cast_nullable_to_non_nullable
+              as DialingCode?,
       coatOfArms: null == coatOfArms
           ? _value.coatOfArms
           : coatOfArms // ignore: cast_nullable_to_non_nullable
@@ -454,7 +458,7 @@ class _$_CountryModel extends _CountryModel {
       final Map<String, String>? languages,
       this.car,
       required this.flags,
-      @JsonKey(name: 'idd') required this.dailingCode,
+      @JsonKey(name: 'idd') this.dialingCode,
       required this.coatOfArms,
       required this.capitalInfo})
       : _capital = capital,
@@ -541,7 +545,7 @@ class _$_CountryModel extends _CountryModel {
 // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'idd')
-  final DailingCode dailingCode;
+  final DialingCode? dialingCode;
   @override
   final Flags coatOfArms;
   @override
@@ -549,7 +553,7 @@ class _$_CountryModel extends _CountryModel {
 
   @override
   String toString() {
-    return 'CountryModel(name: $name, independent: $independent, unMember: $unMember, currencies: $currencies, capital: $capital, region: $region, subregion: $subregion, latlng: $latlng, timezones: $timezones, continents: $continents, flag: $flag, population: $population, startOfWeek: $startOfWeek, area: $area, languages: $languages, car: $car, flags: $flags, dailingCode: $dailingCode, coatOfArms: $coatOfArms, capitalInfo: $capitalInfo)';
+    return 'CountryModel(name: $name, independent: $independent, unMember: $unMember, currencies: $currencies, capital: $capital, region: $region, subregion: $subregion, latlng: $latlng, timezones: $timezones, continents: $continents, flag: $flag, population: $population, startOfWeek: $startOfWeek, area: $area, languages: $languages, car: $car, flags: $flags, dialingCode: $dialingCode, coatOfArms: $coatOfArms, capitalInfo: $capitalInfo)';
   }
 
   @override
@@ -583,8 +587,8 @@ class _$_CountryModel extends _CountryModel {
                 .equals(other._languages, _languages) &&
             (identical(other.car, car) || other.car == car) &&
             (identical(other.flags, flags) || other.flags == flags) &&
-            (identical(other.dailingCode, dailingCode) ||
-                other.dailingCode == dailingCode) &&
+            (identical(other.dialingCode, dialingCode) ||
+                other.dialingCode == dialingCode) &&
             (identical(other.coatOfArms, coatOfArms) ||
                 other.coatOfArms == coatOfArms) &&
             (identical(other.capitalInfo, capitalInfo) ||
@@ -612,7 +616,7 @@ class _$_CountryModel extends _CountryModel {
         const DeepCollectionEquality().hash(_languages),
         car,
         flags,
-        dailingCode,
+        dialingCode,
         coatOfArms,
         capitalInfo
       ]);
@@ -650,7 +654,7 @@ abstract class _CountryModel extends CountryModel {
       final Map<String, String>? languages,
       final Car? car,
       required final Flags flags,
-      @JsonKey(name: 'idd') required final DailingCode dailingCode,
+      @JsonKey(name: 'idd') final DialingCode? dialingCode,
       required final Flags coatOfArms,
       required final CapitalInfo capitalInfo}) = _$_CountryModel;
   _CountryModel._() : super._();
@@ -694,7 +698,7 @@ abstract class _CountryModel extends CountryModel {
   Flags get flags;
   @override // ignore: invalid_annotation_target
   @JsonKey(name: 'idd')
-  DailingCode get dailingCode;
+  DialingCode? get dialingCode;
   @override
   Flags get coatOfArms;
   @override
@@ -1567,34 +1571,34 @@ abstract class _Flags implements Flags {
       throw _privateConstructorUsedError;
 }
 
-DailingCode _$DailingCodeFromJson(Map<String, dynamic> json) {
-  return _DailingCode.fromJson(json);
+DialingCode _$DialingCodeFromJson(Map<String, dynamic> json) {
+  return _DialingCode.fromJson(json);
 }
 
 /// @nodoc
-mixin _$DailingCode {
+mixin _$DialingCode {
   String get root => throw _privateConstructorUsedError;
   List<String> get suffixes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DailingCodeCopyWith<DailingCode> get copyWith =>
+  $DialingCodeCopyWith<DialingCode> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $DailingCodeCopyWith<$Res> {
-  factory $DailingCodeCopyWith(
-          DailingCode value, $Res Function(DailingCode) then) =
-      _$DailingCodeCopyWithImpl<$Res, DailingCode>;
+abstract class $DialingCodeCopyWith<$Res> {
+  factory $DialingCodeCopyWith(
+          DialingCode value, $Res Function(DialingCode) then) =
+      _$DialingCodeCopyWithImpl<$Res, DialingCode>;
   @useResult
   $Res call({String root, List<String> suffixes});
 }
 
 /// @nodoc
-class _$DailingCodeCopyWithImpl<$Res, $Val extends DailingCode>
-    implements $DailingCodeCopyWith<$Res> {
-  _$DailingCodeCopyWithImpl(this._value, this._then);
+class _$DialingCodeCopyWithImpl<$Res, $Val extends DialingCode>
+    implements $DialingCodeCopyWith<$Res> {
+  _$DialingCodeCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1621,22 +1625,22 @@ class _$DailingCodeCopyWithImpl<$Res, $Val extends DailingCode>
 }
 
 /// @nodoc
-abstract class _$$_DailingCodeCopyWith<$Res>
-    implements $DailingCodeCopyWith<$Res> {
-  factory _$$_DailingCodeCopyWith(
-          _$_DailingCode value, $Res Function(_$_DailingCode) then) =
-      __$$_DailingCodeCopyWithImpl<$Res>;
+abstract class _$$_DialingCodeCopyWith<$Res>
+    implements $DialingCodeCopyWith<$Res> {
+  factory _$$_DialingCodeCopyWith(
+          _$_DialingCode value, $Res Function(_$_DialingCode) then) =
+      __$$_DialingCodeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String root, List<String> suffixes});
 }
 
 /// @nodoc
-class __$$_DailingCodeCopyWithImpl<$Res>
-    extends _$DailingCodeCopyWithImpl<$Res, _$_DailingCode>
-    implements _$$_DailingCodeCopyWith<$Res> {
-  __$$_DailingCodeCopyWithImpl(
-      _$_DailingCode _value, $Res Function(_$_DailingCode) _then)
+class __$$_DialingCodeCopyWithImpl<$Res>
+    extends _$DialingCodeCopyWithImpl<$Res, _$_DialingCode>
+    implements _$$_DialingCodeCopyWith<$Res> {
+  __$$_DialingCodeCopyWithImpl(
+      _$_DialingCode _value, $Res Function(_$_DialingCode) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1645,7 +1649,7 @@ class __$$_DailingCodeCopyWithImpl<$Res>
     Object? root = null,
     Object? suffixes = null,
   }) {
-    return _then(_$_DailingCode(
+    return _then(_$_DialingCode(
       root: null == root
           ? _value.root
           : root // ignore: cast_nullable_to_non_nullable
@@ -1660,12 +1664,12 @@ class __$$_DailingCodeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DailingCode implements _DailingCode {
-  _$_DailingCode({this.root = '', final List<String> suffixes = const []})
+class _$_DialingCode implements _DialingCode {
+  _$_DialingCode({this.root = '', final List<String> suffixes = const []})
       : _suffixes = suffixes;
 
-  factory _$_DailingCode.fromJson(Map<String, dynamic> json) =>
-      _$$_DailingCodeFromJson(json);
+  factory _$_DialingCode.fromJson(Map<String, dynamic> json) =>
+      _$$_DialingCodeFromJson(json);
 
   @override
   @JsonKey()
@@ -1680,14 +1684,14 @@ class _$_DailingCode implements _DailingCode {
 
   @override
   String toString() {
-    return 'DailingCode(root: $root, suffixes: $suffixes)';
+    return 'DialingCode(root: $root, suffixes: $suffixes)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DailingCode &&
+            other is _$_DialingCode &&
             (identical(other.root, root) || other.root == root) &&
             const DeepCollectionEquality().equals(other._suffixes, _suffixes));
   }
@@ -1700,23 +1704,23 @@ class _$_DailingCode implements _DailingCode {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DailingCodeCopyWith<_$_DailingCode> get copyWith =>
-      __$$_DailingCodeCopyWithImpl<_$_DailingCode>(this, _$identity);
+  _$$_DialingCodeCopyWith<_$_DialingCode> get copyWith =>
+      __$$_DialingCodeCopyWithImpl<_$_DialingCode>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DailingCodeToJson(
+    return _$$_DialingCodeToJson(
       this,
     );
   }
 }
 
-abstract class _DailingCode implements DailingCode {
-  factory _DailingCode({final String root, final List<String> suffixes}) =
-      _$_DailingCode;
+abstract class _DialingCode implements DialingCode {
+  factory _DialingCode({final String root, final List<String> suffixes}) =
+      _$_DialingCode;
 
-  factory _DailingCode.fromJson(Map<String, dynamic> json) =
-      _$_DailingCode.fromJson;
+  factory _DialingCode.fromJson(Map<String, dynamic> json) =
+      _$_DialingCode.fromJson;
 
   @override
   String get root;
@@ -1724,7 +1728,7 @@ abstract class _DailingCode implements DailingCode {
   List<String> get suffixes;
   @override
   @JsonKey(ignore: true)
-  _$$_DailingCodeCopyWith<_$_DailingCode> get copyWith =>
+  _$$_DialingCodeCopyWith<_$_DialingCode> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
