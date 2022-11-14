@@ -31,18 +31,19 @@ class HomeView extends StatelessWidget {
                       'Explore',
                       style: kHeading2TextStyle.copyWith(color: kBlueColor),
                     ),
-                    InkWell(
-                      onTap: () => {},
-                      child: const Icon(
+                    IconButton(
+                      icon: const Icon(
                         Icons.light_mode_outlined,
-                        color: kBlackColor,
                       ),
-                    ),
+                      color: kBlackColor,
+                      onPressed: model.comingSoon,
+                    )
                   ],
                 ),
                 verticalSpaceRegular,
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  onChanged: model.setSearchText,
+                  decoration: const InputDecoration(
                     filled: true,
                     fillColor: kGreyColor,
                     isDense: true,
@@ -57,53 +58,56 @@ class HomeView extends StatelessWidget {
                 verticalSpaceRegular,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     FilterButton(
                       icon: Icons.language,
                       title: 'EN',
+                      onTap: model.comingSoon,
                     ),
                     FilterButton(
                       icon: Icons.filter_alt_outlined,
                       title: 'Filter',
+                      onTap: model.comingSoon,
                     ),
                   ],
                 ),
                 verticalSpaceRegular,
+                if (model.isBusy)
+                  const AppSpinner(
+                    size: 30,
+                  ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(children: [
-                      if (model.isBusy) const AppSpinner(),
-                      for (final country in model.countries)
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: ListTile(
-                            onTap: () => model.goToDescriptionView(country),
-                            shape: const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8))),
-                            tileColor: kGreyColor,
-                            leading: SizedBox(
-                              height: 50,
-                              width: 50,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  imageUrl: country.logo,
-                                  placeholder: (context, url) =>
-                                      const CircularProgressIndicator(
-                                    color: kGreyColor,
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+                  child: ListView(children: [
+                    for (final country in model.countries)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: ListTile(
+                          onTap: () => model.goToDescriptionView(country),
+                          shape: const RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8))),
+                          tileColor: kGreyColor,
+                          leading: SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: CachedNetworkImage(
+                                imageUrl: country.logo,
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(
+                                  color: kGreyColor,
                                 ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
                               ),
                             ),
-                            title: Text(country.countryName),
-                            subtitle: Text(country.countryCapital),
                           ),
+                          title: Text(country.countryName),
+                          subtitle: Text(country.countryCapital),
                         ),
-                    ]),
-                  ),
+                      ),
+                  ]),
                 ),
               ],
             ),
