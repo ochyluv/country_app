@@ -1,11 +1,13 @@
 import 'package:country_app/app/app.locator.dart';
 import 'package:country_app/app/app.router.dart';
+import 'package:country_app/core/services/setup_snackbar_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+  setupSnackbarUi();
 
   runApp(const MyApp());
 }
