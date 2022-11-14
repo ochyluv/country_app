@@ -13,14 +13,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # State Management
-  stacked: ^3.0.0
-  stacked_services: ^0.9.8
+   # State Management
+  stacked: ^2.3.6
+  stacked_services: ^0.8.17
   flutter_hooks: ^0.18.2+1
 
+
   # Utilities
-  faker: ^2.0.0
-  uuid: ^3.0.6
   http: ^0.13.5
 
   # Data Models
